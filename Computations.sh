@@ -16,3 +16,33 @@ resultDictionary["a+b*c"]=$result1
 resultDictionary["c+a/b"]=$result2
 resultDictionary["a%b+c"]=$result3
 echo "Result From Dictionary :" ${resultDictionary[@]}
+
+couter=0
+resultArray[((counter++))]=${resultDictionary["a+b*c"]}
+resultArray[((counter++))]=${resultDictionary["c+a/b"]}
+resultArray[((counter++))]=${resultDictionary["a%b+c"]}
+echo "Result From Array :"${resultArray[@]}
+
+function sortDescending()
+{
+	resultArray=$1;
+	for ((i = 0; i<2; i++)) 
+	do
+      
+    		for ((j = i; j<3-i; j++)) 
+    		do
+      
+        		if [ ${resultArray[j]} -lt ${resultArray[$((j+1))]} ]
+        		then
+            		# swap 
+            			tmp=${resultArray[$j]} 
+            			resultArray[$j]=${resultArray[$((j+1))]}   
+            			resultArray[$((j+1))]=$tmp 
+        		fi
+    		done
+	done
+	echo ${resultArray[@]}
+  
+}
+
+echo "Sorted Array :"$( sortDescending $resultArray )
