@@ -46,3 +46,26 @@ function sortDescending()
 }
 
 echo "Sorted Array in Descending Order :"$( sortDescending $resultArray )
+function sortAscending()
+{
+	resultArray=$1;
+	for ((i = 0; i<2; i++)) 
+	do
+      
+    		for ((j = i; j<3-i; j++)) 
+    		do
+      
+        		if [ ${resultArray[j]} -gt ${resultArray[$((j+1))]} ]
+        		then
+            		# swap 
+            			tmp=${resultArray[$j]} 
+            			resultArray[$j]=${resultArray[$((j+1))]}   
+            			resultArray[$((j+1))]=$tmp 
+        		fi
+    		done
+	done
+	echo ${resultArray[@]}
+  
+}
+
+echo "Sorted Array in Ascending Order :"$( sortAscending $resultArray )
