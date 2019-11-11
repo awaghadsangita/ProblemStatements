@@ -45,4 +45,4 @@ function sortDescending()
   
 }
 
-echo "Sorted Array :"$( sortDescending $resultArray )
+echo "Sorted Array in Descending Order :"$( sortDescending $resultArray )
